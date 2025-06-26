@@ -111,7 +111,6 @@ interface AppUser {
 }
 
 interface AppAdmin extends Admin, AppUser {}
-
 let admin: AppAdmin;
 
 admin = {
@@ -120,4 +119,20 @@ admin = {
 };
 
 // literal types
-let role: "admin" | "user" | "editor";
+type Role = "admin" | "user" | "editor";
+let role: Role;
+
+function performAction(action: string | number, role: Role) {
+  if (role === "admin" && typeof action === "string") {
+    // ...
+  }
+}
+
+// flexibles, generic types
+let roles: Array<Role>;
+roles = ["admin", "editor"];
+
+type DataStorage<T> = {
+  storage: T[];
+  add: (data: T) => void;
+};
