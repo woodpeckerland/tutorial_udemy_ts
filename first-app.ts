@@ -136,3 +136,19 @@ type DataStorage<T> = {
   storage: T[];
   add: (data: T) => void;
 };
+
+const textStorage: DataStorage<String> = {
+  storage: [],
+  add(data) {
+    this.storage.push(data);
+  }
+};
+
+const userStorage: DataStorage<User> = {
+  storage: [],
+  add(user) {
+    this.storage.push(user);
+  }
+};
+
+function merge<T, U>(a: Text, b: U) {}
